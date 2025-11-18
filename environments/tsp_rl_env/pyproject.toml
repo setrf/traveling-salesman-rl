@@ -1,0 +1,30 @@
+[project]
+name = "tsp-rl-env"
+description = "Traveling Salesman Problem environment for Verifiers and Prime Intellect Environment Hub - synthetic instances for RL training and evaluation"
+tags = ["optimization", "tsp", "traveling-salesman", "reinforcement-learning", "train", "eval"]
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "verifiers>=0.1.7.post0",
+    "datasets>=2.0.0",
+    "numpy>=1.20.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = ["tsp_rl_env.py", "pyproject.toml"]
+
+[tool.verifiers.eval]
+num_examples = 5
+rollouts_per_example = 3
+
+[tool.verifiers.env_args]
+# Default environment arguments
+num_examples = 128
+eval_num_examples = 32
+min_cities = 10
+max_cities = 30
+dataset_seed = 42
